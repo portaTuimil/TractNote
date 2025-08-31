@@ -174,7 +174,8 @@ public partial class DbView : UserControl
                     scrollviewer = new ScrollViewer
                     {
                         VerticalScrollBarVisibility = Avalonia.Controls.Primitives.ScrollBarVisibility.Auto,
-                        HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Stretch
+                        HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Stretch,
+                        Padding = new Thickness(0,0,5,0)
                     };
                 }
                 else
@@ -182,7 +183,8 @@ public partial class DbView : UserControl
                     scrollviewer = new ScrollViewer
                     {
                         VerticalScrollBarVisibility = Avalonia.Controls.Primitives.ScrollBarVisibility.Hidden,
-                        HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Stretch
+                        HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Stretch,
+                        Padding = new Thickness(0,0,5,0)
                     };
                 }
 
@@ -219,7 +221,7 @@ public partial class DbView : UserControl
                                 ? new Thickness(0, 0, 0, 0)
                                 : new Thickness(0, 0, 0.4, 0.4)),
                         BorderBrush = new SolidColorBrush(Color.Parse("#66AAAACC")),
-                        Padding = new Thickness(7, 5)
+                        Padding = new Thickness(7, 5),
                     };
 
                     TextBlock textBlock;
