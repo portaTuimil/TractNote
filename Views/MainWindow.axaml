@@ -27,7 +27,9 @@
 								<DataTemplate>
 									<Button Content="{Binding .}"
 											Margin="5"
-											HorizontalAlignment="Stretch"/>
+											HorizontalAlignment="Stretch"
+											Click="RenderDb">
+									</Button>
 								</DataTemplate>
 							</ItemsControl.ItemTemplate>
 						</ItemsControl>

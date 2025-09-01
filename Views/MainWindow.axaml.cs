@@ -15,10 +15,6 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         this.DataContext = new MainWindowViewModel();
-        /*
-            button.Click += RenderDb;
-            recentFiles.Children.Add(button);
-        */
     }
 
     public async void SaveFileButton_Clicked(object? sender, RoutedEventArgs e)

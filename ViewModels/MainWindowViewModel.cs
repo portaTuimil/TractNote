@@ -25,6 +25,7 @@ public class MainWindowViewModel : ViewModelBase, INotifyPropertyChanged
         OnPropertyChanged(nameof(FileTitles));
     }
 
+
     //INotifyPropertyChanged Implementation
     public event PropertyChangedEventHandler? PropertyChanged;
     protected void OnPropertyChanged([CallerMemberName] string? name = null)
