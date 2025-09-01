@@ -39,8 +39,8 @@ public partial class MainWindow : Window
             var pickedFile = files[0];
             string fileName = pickedFile.Name;
             string? fullPath = pickedFile.Path?.LocalPath;
-            Debug.WriteLine($"Selected file: {fileName}");
-            Debug.WriteLine($"Full path: {fullPath}");
+            /*Debug.WriteLine($"Selected file: {fileName}");
+            Debug.WriteLine($"Full path: {fullPath}");*/
         }
     }
 
