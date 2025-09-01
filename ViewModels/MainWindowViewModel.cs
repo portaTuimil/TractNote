@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace TractNote.ViewModels;
 
@@ -13,6 +16,7 @@ namespace TractNote.ViewModels;
 public class MainWindowViewModel : ViewModelBase, INotifyPropertyChanged
 {
     public ObservableCollection<string>? FileTitles { get; private set; }
+    private readonly string Path = System.IO.Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", "TractNote", "Settings", "SavedAdresses.csv");
 
     public MainWindowViewModel() 
     {
@@ -21,7 +25,9 @@ public class MainWindowViewModel : ViewModelBase, INotifyPropertyChanged
 
     public void GetSavedAdresses()
     {
-        FileTitles = ["Terms", "Terms2"];
+        string readText = File.ReadAllText(Path);
+        string[] values = readText.Split(',');
+        FileTitles = new ObservableCollection<string>(values);
         OnPropertyChanged(nameof(FileTitles));
     }
 

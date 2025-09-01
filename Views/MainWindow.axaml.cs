@@ -51,7 +51,5 @@ public partial class MainWindow : Window
             string contentText = btn.Content?.ToString() ?? "";
             MainContent.Content = new DbView(contentText);
         }
-    }
-
-   
+    } 
 }

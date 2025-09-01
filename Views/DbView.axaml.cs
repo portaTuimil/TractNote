@@ -1,9 +1,11 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Shapes;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
@@ -294,7 +296,7 @@ public partial class DbView : UserControl
         public Db(string name)
         {
             Name = name;
-            Text = GetContent(name + ".csv");
+            Text = GetContent(name);
             if (Text != null)
             {
                 ContentList = SeparateContent(Text);
@@ -307,14 +309,12 @@ public partial class DbView : UserControl
         {
             try
             {
-                string baseDir = AppContext.BaseDirectory;
-                string filePath = System.IO.Path.Combine(baseDir, "..", "..", "..", "..", "TableViewer", "Db", file);
-                return File.ReadAllText(filePath);
+                return File.ReadAllText(file.Trim('"').Trim().Trim('"'));
 
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error reading file: {ex.Message}");
+                Debug.WriteLine($"Error reading file: {ex.Message}");
                 return null;
             }
         }
