@@ -1,6 +1,7 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Shapes;
+using Avalonia.Input;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 using System;
@@ -13,11 +14,17 @@ namespace TractNote;
 
 public partial class DbView : UserControl
 {
-    public DbView(string DbAdress)
+    private ContentControl maincontent;
+    public DbView(string DbAdress, ContentControl MainContent)
     {
         InitializeComponent();
         Db db = new(DbAdress);
         Visualizer visualizer = new(db, tableGrid);
+        this.AttachedToVisualTree += (_, __) =>
+        {
+            this.Focus();
+        };
+        maincontent = MainContent;
     }
 
 
@@ -279,6 +286,14 @@ public partial class DbView : UserControl
                 Grid.SetRow(innerViewers[i], 1);
                 tableGrid.Children.Add(innerViewers[i]);
             }
+        }
+    }
+
+    private void UserControl_DeleteKeyDown(object? sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.Back)
+        {
+            MainContent.Content = new MainMenuView(MainContent);
         }
     }
 

@@ -15,41 +15,6 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         this.DataContext = new MainWindowViewModel();
+        MainContent.Content = new MainMenuView(MainContent);
     }
-
-    public async void SaveFileButton_Clicked(object? sender, RoutedEventArgs e)
-    {
-        var topLevel = TopLevel.GetTopLevel(this);
-        if (topLevel == null) return;
-
-        var files = await topLevel.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
-        {
-            Title = "Open Text File",
-            AllowMultiple = false
-        });
-
-        if (files.Count >= 1)
-        {
-            await using var stream = await files[0].OpenReadAsync();
-            using var reader = new StreamReader(stream);
-            var fileContent = await reader.ReadToEndAsync();
-        }
-        if (files.Count >= 1)
-        {
-            var pickedFile = files[0];
-            string fileName = pickedFile.Name;
-            string? fullPath = pickedFile.Path?.LocalPath;
-            /*Debug.WriteLine($"Selected file: {fileName}");
-            Debug.WriteLine($"Full path: {fullPath}");*/
-        }
-    }
-
-    public void RenderDb(object? sender, RoutedEventArgs e)
-    {
-        if (sender is Button btn)
-        {
-            string contentText = btn.Content?.ToString() ?? "";
-            MainContent.Content = new DbView(contentText);
-        }
-    } 
 }
