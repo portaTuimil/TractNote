@@ -76,8 +76,12 @@ public class MainWindowViewModel : ViewModelBase, INotifyPropertyChanged
             lines[0] = lines[0] + ", " + filePath;
             File.WriteAllLines(Path, lines);
             GetSavedAdresses();
-        }
-            
+        }           
+    }
+
+    public void CleanSavedAdresses()
+    {
+        File.Delete(Path);
     }
 
 

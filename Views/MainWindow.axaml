@@ -8,6 +8,9 @@
         x:Class="TractNote.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
 		Background="#191919"
-        Title="TractNote">
+        Title="TractNote"
+		Focusable="True"
+        KeyDown="OnKeyDown"
+        TextInput="OnTextInput">
 	<ContentControl x:Name="MainContent" Grid.Row="1"/>
 </Window>
