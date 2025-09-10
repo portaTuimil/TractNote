@@ -289,16 +289,6 @@ public partial class DbView : UserControl
         }
     }
 
-    private void UserControl_DeleteKeyDown(object? sender, KeyEventArgs e)
-    {
-        if (e.Key == Key.Back)
-        {
-            MainContent.Content = new MainMenuView(MainContent);
-        }
-    }
-
-
-
     public class Db
     {
         public string Name { get; private set; }
